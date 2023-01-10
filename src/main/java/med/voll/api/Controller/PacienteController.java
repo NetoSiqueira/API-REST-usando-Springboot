@@ -2,8 +2,8 @@ package med.voll.api.Controller;
 
 import jakarta.validation.Valid;
 import med.voll.api.model.Paciente;
-import med.voll.api.record.PacienteListagemRecord;
-import med.voll.api.record.PacienteRecord;
+import med.voll.api.record.lista.PacienteListagemRecord;
+import med.voll.api.record.entidade.PacienteRecord;
 import med.voll.api.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

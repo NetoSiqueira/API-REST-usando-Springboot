@@ -1,4 +1,4 @@
-package med.voll.api.record;
+package med.voll.api.record.entidade;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

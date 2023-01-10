@@ -1,4 +1,4 @@
-package med.voll.api.record;
+package med.voll.api.record.lista;
 
 import med.voll.api.model.Paciente;
 
