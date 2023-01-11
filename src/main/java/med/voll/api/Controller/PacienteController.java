@@ -2,6 +2,7 @@ package med.voll.api.Controller;
 
 import jakarta.validation.Valid;
 import med.voll.api.model.Paciente;
+import med.voll.api.record.atualizacao.PacienteAtualizacaoRecord;
 import med.voll.api.record.lista.PacienteListagemRecord;
 import med.voll.api.record.entidade.PacienteRecord;
 import med.voll.api.repository.PacienteRepository;
@@ -29,6 +30,13 @@ public class PacienteController {
     @GetMapping
     public Page<PacienteListagemRecord> listarPacientes(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginação){
         return pacrepository.findAll(paginação).map(PacienteListagemRecord::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void AtualizarPaciente(@RequestBody @Valid PacienteAtualizacaoRecord dados){
+        var paciente = pacrepository.getReferenceById(dados.id());
+        paciente.atualizarInformacoes(dados);
     }
 
 }
