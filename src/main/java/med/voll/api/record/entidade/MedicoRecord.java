@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import med.voll.api.model.Especialidade;
-import med.voll.api.record.entidade.EnderecoRecord;
+
 
 public record MedicoRecord(
         @NotBlank(message = "Nome é obrigatório")
@@ -14,7 +14,6 @@ public record MedicoRecord(
         @NotBlank
         @Email
         String email,
-
         @NotBlank
         String telefone,
         @NotBlank
