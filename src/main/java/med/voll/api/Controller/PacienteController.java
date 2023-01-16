@@ -60,4 +60,13 @@ public class PacienteController {
         return    ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity detalhamentoPaciente(@PathVariable Long id){
+        var paciente = pacrepository.getReferenceById(id);
+
+
+        return   ResponseEntity.ok(new PacienteDetalhamentoRecord(paciente));
+
+    }
+
 }

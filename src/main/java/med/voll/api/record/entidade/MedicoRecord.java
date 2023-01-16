@@ -9,7 +9,7 @@ import med.voll.api.model.Especialidade;
 import med.voll.api.record.entidade.EnderecoRecord;
 
 public record MedicoRecord(
-        @NotBlank
+        @NotBlank(message = "Nome é obrigatório")
         String nome,
         @NotBlank
         @Email
