@@ -1,6 +1,7 @@
 package med.voll.api.Controller;
 
 import jakarta.validation.Valid;
+import med.voll.api.infra.security.TokenJWTRecordSecurity;
 import med.voll.api.infra.security.TokenService;
 import med.voll.api.model.Usuario;
 import med.voll.api.record.entidade.AutenticacaoRecord;
@@ -25,9 +26,10 @@ public class AutenticacaoController {
 
     @PostMapping
     public ResponseEntity efetuarLogin(@RequestBody @Valid AutenticacaoRecord dados){
-     var token = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
-      var authentication =  manager.authenticate(token);
+     var authenticationToken = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
+      var authentication =  manager.authenticate(authenticationToken);
+      var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());
 
-      return ResponseEntity.ok(tokenService.gerarToken((Usuario) authentication.getPrincipal()));
+      return ResponseEntity.ok(new TokenJWTRecordSecurity(tokenJWT));
     }
 }
